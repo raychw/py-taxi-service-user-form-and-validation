@@ -21,13 +21,13 @@ class ValidatorMixin:
         return license_number
 
 
-class DriverLicenseUpdateForm(forms.ModelForm, ValidatorMixin):
+class DriverLicenseUpdateForm(ValidatorMixin, forms.ModelForm):
     class Meta:
         model = Driver
         fields = ["license_number"]
 
 
-class DriverCreateForm(UserCreationForm, ValidatorMixin):
+class DriverCreateForm(ValidatorMixin, UserCreationForm):
     class Meta:
         model = Driver
         fields = UserCreationForm.Meta.fields + (
